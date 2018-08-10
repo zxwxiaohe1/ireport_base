@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report2" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1e7ed49e-c1cc-438e-a15a-793deb704c1a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="chartDataset" uuid="7133d8c2-a01e-40c9-b357-f7ff546422b3">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="age" class="java.lang.Integer">
+			<fieldDescription><![CDATA[age]]></fieldDescription>
+		</field>
+		<field name="sex" class="java.lang.String">
+			<fieldDescription><![CDATA[sex]]></fieldDescription>
+		</field>
+		<field name="uid" class="java.lang.String">
+			<fieldDescription><![CDATA[uid]]></fieldDescription>
+		</field>
+		<group name="sex">
+			<groupExpression><![CDATA[$F{sex}]]></groupExpression>
+		</group>
+	</subDataset>
+	<field name="chart_Datas" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageFooter>
+		<band height="123" splitType="Stretch">
+			<pieChart>
+				<chart>
+					<reportElement x="174" y="23" width="200" height="100" uuid="9f0735da-375d-45b7-94a6-16d773728409"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<dataset>
+						<datasetRun subDataset="chartDataset" uuid="d030c324-79c1-43d7-8e4f-1e67e639d8b2">
+							<dataSourceExpression><![CDATA[$F{chart_Datas}]]></dataSourceExpression>
+						</datasetRun>
+					</dataset>
+					<keyExpression><![CDATA[$F{sex}]]></keyExpression>
+					<valueExpression><![CDATA[$V{sex_COUNT}]]></valueExpression>
+				</pieDataset>
+				<piePlot labelFormat="{0}{2}">
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+		</band>
+	</pageFooter>
+</jasperReport>

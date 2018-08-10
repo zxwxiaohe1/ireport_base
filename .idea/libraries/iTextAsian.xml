@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="iTextAsian">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://E:/专业知识/about_ireport/inter_word/help/help_jar/lib/iTextAsian.jar!/" />
+    </SOURCES>
+    <jarDirectory url="jar://E:/专业知识/about_ireport/inter_word/help/help_jar/lib/iTextAsian.jar!/" recursive="false" type="SOURCES" />
+  </library>
+</component>

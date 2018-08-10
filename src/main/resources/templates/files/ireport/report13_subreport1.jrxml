@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report13_subreport1" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="c684c795-5ed9-47d1-8e95-cf66eccacd8e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="subDataset" uuid="a6d21a63-a8ad-4993-b54d-111e74b58413">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="age" class="java.lang.Integer">
+			<fieldDescription><![CDATA[age]]></fieldDescription>
+		</field>
+		<field name="loginname" class="java.lang.String">
+			<fieldDescription><![CDATA[loginname]]></fieldDescription>
+		</field>
+		<field name="name" class="java.lang.String">
+			<fieldDescription><![CDATA[name]]></fieldDescription>
+		</field>
+		<field name="password" class="java.lang.String">
+			<fieldDescription><![CDATA[password]]></fieldDescription>
+		</field>
+		<field name="uid" class="java.lang.String">
+			<fieldDescription><![CDATA[uid]]></fieldDescription>
+		</field>
+	</subDataset>
+	<parameter name="listSubData" class="java.util.List"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="age" class="java.lang.Integer">
+		<fieldDescription><![CDATA[age]]></fieldDescription>
+	</field>
+	<field name="loginname" class="java.lang.String">
+		<fieldDescription><![CDATA[loginname]]></fieldDescription>
+	</field>
+	<field name="name" class="java.lang.String">
+		<fieldDescription><![CDATA[name]]></fieldDescription>
+	</field>
+	<field name="password" class="java.lang.String">
+		<fieldDescription><![CDATA[password]]></fieldDescription>
+	</field>
+	<field name="uid" class="java.lang.String">
+		<fieldDescription><![CDATA[uid]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="162">
+			<line>
+				<reportElement x="0" y="30" width="555" height="1" uuid="14d8ca42-705f-4cb4-b067-7c727547e51c"/>
+			</line>
+		</band>
+	</detail>
+	<summary>
+		<band height="132">
+			<componentElement>
+				<reportElement key="table 2" style="table 2" x="0" y="0" width="450" height="132" uuid="6d10aefa-5cc8-486f-bd4b-d3a884dc7383"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="subDataset" uuid="e3472ca7-e3e0-46bb-8217-4039709d7ef9">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{listSubData})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="0" uuid="684ef219-6ebb-4900-b3ed-7e28f4aacaa0">
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1"/>
+					</jr:column>
+					<jr:column width="90" uuid="b05e9bae-5dd6-4e2c-959d-9a522d4476d9">
+						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="3b26af8b-0851-40f2-97d0-82f00d4c962f"/>
+								<textElement>
+									<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+								</textElement>
+								<text><![CDATA[name]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="67bf49c2-f673-4810-9de4-b0874fd82290"/>
+								<textElement>
+									<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="1" uuid="6dc17fa8-6138-4a36-be35-a4115352738a">
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1"/>
+					</jr:column>
+					<jr:column width="201" uuid="55a3ba3c-5ea7-4943-a3e5-7a42ef8f2a59">
+						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="201" height="30" uuid="e5f53d71-8448-490b-98b8-a62ee1015843"/>
+								<textElement>
+									<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+								</textElement>
+								<text><![CDATA[uid]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="201" height="20" uuid="ba68240d-0c93-4420-bd4d-6e2c4419fa7c"/>
+								<textElement>
+									<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{uid}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</summary>
+</jasperReport>

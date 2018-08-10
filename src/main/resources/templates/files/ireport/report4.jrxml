@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report4" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="53a3ea39-dd3b-4550-b303-c5e3b07f747d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="tableData" uuid="6dc29c66-b71f-4462-ad4d-7963f52d2831">
+		<queryString>
+			<![CDATA[select * from user]]>
+		</queryString>
+		<field name="uid" class="java.lang.String"/>
+		<field name="name" class="java.lang.String"/>
+		<field name="age" class="java.lang.Integer"/>
+		<variable name="account" class="java.lang.Number" calculation="Count">
+			<variableExpression><![CDATA[$F{uid}]]></variableExpression>
+		</variable>
+	</subDataset>
+	<subDataset name="crossTabData" uuid="e69feaed-2c2b-427d-ae9b-29a7ba4125ad">
+		<queryString language="SQL">
+			<![CDATA[select * from user]]>
+		</queryString>
+		<field name="name" class="java.lang.String"/>
+		<field name="sex" class="java.lang.String"/>
+		<field name="age" class="java.lang.Integer"/>
+		<field name="uid" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="chartData" uuid="69ea2ddf-77a8-4255-aa4b-db6f85a7a002">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="sex" class="java.lang.String"/>
+		<field name="age" class="java.lang.Integer"/>
+		<field name="uid" class="java.lang.String"/>
+		<variable name="account" class="java.lang.Integer" resetType="Group" resetGroup="sex" calculation="Count">
+			<variableExpression><![CDATA[$F{uid}]]></variableExpression>
+		</variable>
+		<group name="sex">
+			<groupExpression><![CDATA[$F{sex}]]></groupExpression>
+		</group>
+	</subDataset>
+	<subDataset name="subtableDataset" uuid="61d128bb-9a25-4854-9a8b-0dd61b3e452a">
+		<queryString>
+			<![CDATA[select sex,age from user group by sex]]>
+		</queryString>
+		<field name="sex" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="age" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<variable name="age_avg" class="java.lang.Integer" resetType="Group" resetGroup="sex" incrementType="Group" incrementGroup="sex" calculation="Average">
+			<variableExpression><![CDATA[$V{age_avg}]]></variableExpression>
+		</variable>
+		<group name="sex">
+			<groupExpression><![CDATA[$F{sex}]]></groupExpression>
+		</group>
+	</subDataset>
+	<subDataset name="HDDataSet" uuid="57170ab2-b76b-4077-9c9c-5f4efa89ec07">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="age" class="java.lang.Integer">
+			<fieldDescription><![CDATA[age]]></fieldDescription>
+		</field>
+		<field name="sex" class="java.lang.String">
+			<fieldDescription><![CDATA[sex]]></fieldDescription>
+		</field>
+		<field name="statistics" class="java.lang.Integer"/>
+	</subDataset>
+	<queryString language="SQL">
+		<![CDATA[select * from user]]>
+	</queryString>
+	<field name="table_datas" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<field name="crosstable_datas" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<field name="chart_Datas" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<field name="histogram_Datas" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="264">
+			<crosstab>
+				<reportElement x="50" y="44" width="448" height="86" uuid="46083063-e7c4-414d-8462-c4d4cd15c053"/>
+				<crosstabDataset>
+					<dataset>
+						<datasetRun subDataset="crossTabData" uuid="7a518965-c884-4a2f-b9fe-830aec71f1c6">
+							<dataSourceExpression><![CDATA[$F{crosstable_datas}]]></dataSourceExpression>
+						</datasetRun>
+					</dataset>
+				</crosstabDataset>
+				<rowGroup name="sex" width="70" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{sex}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="70" height="25" uuid="514e9d1a-85d6-42f8-a88e-921ac6bd8e19"/>
+								<textElement>
+									<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{sex}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="70" height="25" uuid="8f488160-ba86-4bb0-8dfd-bddca88602b8"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+								</textElement>
+								<text><![CDATA[合计：]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="age" height="30">
+					<bucket class="java.lang.Integer">
+						<bucketExpression><![CDATA[$F{age}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="30" uuid="4fdb84c5-e23a-4a9d-9544-d63314124794"/>
+								<textElement>
+									<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{age}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents/>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="uidMeasure" class="java.lang.Integer" calculation="Count">
+					<measureExpression><![CDATA[$F{uid}]]></measureExpression>
+				</measure>
+				<crosstabCell width="50" height="25">
+					<cellContents>
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="98d4f3f1-f5c2-4469-abb9-f665b2c8242e"/>
+							<textElement>
+								<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{uidMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell height="25" rowTotalGroup="sex">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="36507ecd-0b4a-4d1e-9a5f-02a30e558943"/>
+							<textElement>
+								<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{uidMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="50" columnTotalGroup="age">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="73902d40-f93a-4dd0-becd-9e91025b188b"/>
+							<textFieldExpression><![CDATA[$V{uidMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="sex" columnTotalGroup="age">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="f7e0bde8-6c4f-4e57-86f2-e977dd6cd7c9"/>
+							<textFieldExpression><![CDATA[$V{uidMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+			</crosstab>
+			<staticText>
+				<reportElement x="165" y="0" width="221" height="44" uuid="5a06342d-1b86-4ed0-8da0-9b7411259569"/>
+				<textElement>
+					<font size="24" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[交叉报表分组统计]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement key="table" style="table" x="79" y="158" width="397" height="106" uuid="64466e34-e47b-4d1f-a098-52ec97772573"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="tableData" uuid="0e891003-47d6-4b34-92d7-4e862ea361a7">
+						<dataSourceExpression><![CDATA[$F{table_datas}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:columnGroup width="345" uuid="a1faf19a-306a-40db-8c1d-38bac3f2840d">
+						<jr:tableHeader height="35" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="345" height="35" uuid="0857010d-8070-4379-b39b-0c9c78c865e8"/>
+								<textElement textAlignment="Center">
+									<font fontName="微软雅黑" size="24" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+								</textElement>
+								<text><![CDATA[用户个人信息报表]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:column width="176" uuid="ad5cddd1-d62a-40e6-bc0d-463c52271860">
+							<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="175" height="30" uuid="acad2815-a590-4b4a-bf22-e07f884e1ceb"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="微软雅黑" size="12" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+									</textElement>
+									<text><![CDATA[用户ID]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:columnFooter style="table_CH" height="29" rowSpan="1"/>
+							<jr:detailCell style="table_TD" height="20" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="175" height="20" uuid="65ec2f32-e318-43a3-9194-aa531dd21e19"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="微软雅黑" size="12" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{uid}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="84" uuid="f91a83fb-4089-4485-a776-03afcafcfbb6">
+							<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="84" height="30" uuid="bb1760dd-5f15-4fb4-be84-e088fffeff91"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="微软雅黑" size="12" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+									</textElement>
+									<text><![CDATA[姓名]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:columnFooter style="table_CH" height="29" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="84" height="29" uuid="6210e0c7-eb12-4826-a892-c8ff52934342"/>
+									<textElement textAlignment="Right">
+										<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+									</textElement>
+									<text><![CDATA[总人数：]]></text>
+								</staticText>
+							</jr:columnFooter>
+							<jr:detailCell style="table_TD" height="20" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="84" height="20" uuid="ad4dff37-e0ce-4095-9af4-926194a00373"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="微软雅黑" size="12" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="85" uuid="81286d73-71e5-4205-970e-af1e63d86791">
+							<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="85" height="30" uuid="86480531-6fc1-489e-9b32-db5efdf1d516"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="微软雅黑" size="12" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H"/>
+									</textElement>
+									<text><![CDATA[年龄]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:columnFooter style="table_CH" height="29" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="85" height="29" uuid="31c3e747-9dbc-4030-8678-76d93b30acc6"/>
+									<textFieldExpression><![CDATA[$V{account}]]></textFieldExpression>
+								</textField>
+							</jr:columnFooter>
+							<jr:detailCell style="table_TD" height="20" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="85" height="20" uuid="97c7fa09-58b7-4ea7-a31a-54c85642eeef"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="微软雅黑" size="12" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{age}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<lastPageFooter>
+		<band height="100">
+			<pieChart>
+				<chart>
+					<reportElement x="0" y="0" width="200" height="100" uuid="267c64ed-9e00-447e-a0ff-94d69d0775ea"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset maxCount="20">
+					<dataset>
+						<datasetRun subDataset="chartData" uuid="be845af9-f7c6-4230-992c-be8a48c32b09">
+							<dataSourceExpression><![CDATA[$F{chart_Datas}]]></dataSourceExpression>
+						</datasetRun>
+					</dataset>
+					<keyExpression><![CDATA[$F{sex}]]></keyExpression>
+					<valueExpression><![CDATA[$V{sex_COUNT}]]></valueExpression>
+				</pieDataset>
+				<piePlot labelFormat="{0}{2}">
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+			<elementGroup/>
+			<bar3DChart>
+				<chart>
+					<reportElement x="355" y="0" width="200" height="100" uuid="a2b62790-6375-4b87-a1fd-7d82276e27a7"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<dataset>
+						<datasetRun subDataset="HDDataSet" uuid="6667a415-743c-4332-b39d-0e7f01335d12">
+							<dataSourceExpression><![CDATA[$F{histogram_Datas}]]></dataSourceExpression>
+						</datasetRun>
+					</dataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{age}]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{sex}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{statistics}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<bar3DPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</bar3DPlot>
+			</bar3DChart>
+		</band>
+	</lastPageFooter>
+</jasperReport>

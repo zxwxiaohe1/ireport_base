@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report13" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="78060c13-2086-40cb-b774-aecba8cbbb3e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["H:\\work\\space\\IDES\\demoireport\\src\\main\\resources\\templates\\files\\ireport\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="dstatus" class="java.lang.String">
+		<fieldDescription><![CDATA[dstatus]]></fieldDescription>
+	</field>
+	<field name="dname" class="java.lang.String">
+		<fieldDescription><![CDATA[dname]]></fieldDescription>
+	</field>
+	<field name="did" class="java.lang.String">
+		<fieldDescription><![CDATA[did]]></fieldDescription>
+	</field>
+	<field name="listSubData" class="java.util.List">
+		<fieldDescription><![CDATA[listSubData]]></fieldDescription>
+	</field>
+	<field name="dtype" class="java.lang.String">
+		<fieldDescription><![CDATA[dtype]]></fieldDescription>
+	</field>
+	<field name="rank" class="java.lang.String">
+		<fieldDescription><![CDATA[rank]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="34">
+			<staticText>
+				<reportElement x="99" y="0" width="395" height="34" uuid="6a517b61-72ee-4a13-a666-e0c2483d2d74"/>
+				<textElement>
+					<font size="24" isBold="false"/>
+				</textElement>
+				<text><![CDATA[子报表统计每一个部门下的人员信息]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="33">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="0" width="111" height="20" backcolor="#0000FF" uuid="240176d9-bbaa-471b-9689-0f73af4cdee7"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="111" y="0" width="221" height="20" backcolor="#0000FF" uuid="8d3ab533-6672-4d03-b06f-d21449c6fb23"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{did}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="332" y="0" width="111" height="20" backcolor="#0000FF" uuid="ed08cad0-c674-4499-92ef-56dd53fa9ca8"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dtype}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="194" splitType="Stretch">
+			<subreport>
+				<reportElement x="99" y="0" width="332" height="36" uuid="eca99b1b-bc9b-4332-a9c5-254fc724e2a9">
+					<printWhenExpression><![CDATA[$F{listSubData}!=null]]></printWhenExpression>
+				</reportElement>
+				<subreportParameter name="listSubData">
+					<subreportParameterExpression><![CDATA[$F{listSubData}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{listSubData})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "report13_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>
